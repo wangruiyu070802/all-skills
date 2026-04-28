@@ -12,7 +12,7 @@ h1 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
 .subtitle { color: #666; font-size: 14px; margin-bottom: 32px; }
 h2 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e0e0e0; }
 .skill-list { list-style: none; }
-.skill-list li { padding: 6px 0; display: flex; align-items: baseline; gap: 8px; }
+.skill-list li { padding: 5px 0; display: flex; align-items: baseline; gap: 8px; }
 .skill-list li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #888; flex-shrink: 0; }
 a { color: #2563eb; text-decoration: none; font-size: 14px; font-weight: 500; }
 a:hover { text-decoration: underline; }
@@ -25,17 +25,23 @@ a:hover { text-decoration: underline; }
 <h1>All Skills</h1>
 <p class="subtitle">牛马AI 技能仓库 · <span id="total"></span></p>
 
-<h2>写作与内容 <span class="count">(20)</span></h2>
+<h2>写作与内容 <span class="count">(26)</span></h2>
 <ul class="skill-list">
 <li><a href="./01-写作与内容/AI贴片文案生成器">AI贴片文案生成器</a><span class="desc">— 从播客、文章、长内容素材中产出AI贴片视频文案</span></li>
 <li><a href="./01-写作与内容/blog-post-writer">blog-post-writer</a><span class="desc">— 将零散想法或原始文章转化为指定风格的公众号文章</span></li>
+<li><a href="./01-写作与内容/brand-guidelines">brand-guidelines</a><span class="desc">— 应用品牌配色和排版到各类内容制品</span></li>
+<li><a href="./01-写作与内容/daily-review">daily-review</a><span class="desc">— 每日工作回顾与洞察分析，总结改进建议</span></li>
 <li><a href="./01-写作与内容/dao-fa-shu-qi">dao-fa-shu-qi</a><span class="desc">— 道法术器拆解器，用第一人称口述视角深度拆解内容</span></li>
+<li><a href="./01-写作与内容/deep-review">deep-review</a><span class="desc">— 深度工作分析与项目洞察，长期维度总结</span></li>
 <li><a href="./01-写作与内容/doc-coauthoring">doc-coauthoring</a><span class="desc">— 通过结构化工作流协作文档、提案、技术规格</span></li>
 <li><a href="./01-写作与内容/dontbesilent爆款选题生成器">dontbesilent爆款选题生成器</a><span class="desc">— 基于 dontbesilent 推文库生成短视频爆款选题卡片</span></li>
+<li><a href="./01-写作与内容/internal-comms">internal-comms</a><span class="desc">— 内部沟通文案写作模板与格式</span></li>
 <li><a href="./01-写作与内容/jc-jiaocheng">jc-jiaocheng</a><span class="desc">— 写出「读完就能动」的教程和行动手册</span></li>
 <li><a href="./01-写作与内容/jincheng-pyq">jincheng-pyq</a><span class="desc">— 何锦成朋友圈风格文案生成与优化</span></li>
 <li><a href="./01-写作与内容/khazix-writer">khazix-writer</a><span class="desc">— 数字生命卡兹克公众号长文写作</span></li>
-<li><a href="./01-写作与内容/self-intro-writer">self-intro-writer</a><span class="desc">— 生成不同场景的自我介绍文案</span></li>
+<li><a href="./01-写作与内容/long-term-plan">long-term-plan</a><span class="desc">— 创建和管理长期项目计划文档</span></li>
+<li><a href="./01-写作与内容/self-intro-writer">self-intro-writer</a><span class="desc">— 生成不同场景（私聊、社群、朋友圈、商务）的自我介绍</span></li>
+<li><a href="./01-写作与内容/skill-creator">skill-creator</a><span class="desc">— 创建和更新技能（Skill）的完整指南</span></li>
 <li><a href="./01-写作与内容/xiaojiang">xiaojiang</a><span class="desc">— 基于「销讲六段式」撰写私域直播销讲稿</span></li>
 <li><a href="./01-写作与内容/yanjiang">yanjiang</a><span class="desc">— 演讲稿与分享稿打磨工具（建稿/打磨/诊断）</span></li>
 <li><a href="./01-写作与内容/五步写作法">五步写作法</a><span class="desc">— 两阶段写作辅助：生成备选标题 + 五步写作法拆解</span></li>
@@ -49,9 +55,10 @@ a:hover { text-decoration: underline; }
 <li><a href="./01-写作与内容/私戳作业批改">私戳作业批改</a><span class="desc">— 批改战队成员私戳聊天记录，输出四段式培训分析</span></li>
 </ul>
 
-<h2>商业思维 <span class="count">(15)</span></h2>
+<h2>商业思维 <span class="count">(16)</span></h2>
 <ul class="skill-list">
 <li><a href="./02-商业思维/chatroom-austrian">chatroom-austrian</a><span class="desc">— 哈耶克 × 米塞斯 × Claude 奥派经济学三人对话</span></li>
+<li><a href="./02-商业思维/data-analysis">data-analysis</a><span class="desc">— 全链路数据分析，支持表格/文档/图像处理</span></li>
 <li><a href="./02-商业思维/dbs">dbs</a><span class="desc">— dontbesilent 商业工具箱主入口，自动路由诊断工具</span></li>
 <li><a href="./02-商业思维/dbs-action">dbs-action</a><span class="desc">— 用阿德勒心理学诊断执行力问题</span></li>
 <li><a href="./02-商业思维/dbs-benchmark">dbs-benchmark</a><span class="desc">— 五重过滤法找到值得模仿的对标</span></li>
@@ -68,36 +75,74 @@ a:hover { text-decoration: underline; }
 <li><a href="./02-商业思维/行业研究">行业研究</a><span class="desc">— 系统性行业研究分析框架</span></li>
 </ul>
 
-<h2>提示词与AI <span class="count">(8)</span></h2>
+<h2>提示词与AI <span class="count">(13)</span></h2>
 <ul class="skill-list">
 <li><a href="./03-提示词与AI/AI方法论学习器">AI方法论学习器</a><span class="desc">— 从别人AI使用素材中提炼可复用方法论和技巧</span></li>
 <li><a href="./03-提示词与AI/BROK提示词优化器">BROK提示词优化器</a><span class="desc">— 用 BROK 框架分析、优化或从零创建提示词</span></li>
 <li><a href="./03-提示词与AI/ai-yuyi">ai-yuyi</a><span class="desc">— AI 使用水平诊断与提升教练</span></li>
+<li><a href="./03-提示词与AI/claude-skills-zh-cn">claude-skills-zh-cn</a><span class="desc">— Anthropic Skills 中文翻译集合</span></li>
 <li><a href="./03-提示词与AI/interactive-learning">interactive-learning</a><span class="desc">— 基于 Bloom 2 Sigma 理论的一对一交互式学习系统</span></li>
 <li><a href="./03-提示词与AI/jc-clarifier">jc-clarifier</a><span class="desc">— 万能问题澄清器，模糊需求 → 清晰提示词</span></li>
+<li><a href="./03-提示词与AI/mcp-builder">mcp-builder</a><span class="desc">— 创建高质量 MCP 服务器的完整指南</span></li>
+<li><a href="./03-提示词与AI/niuma-help">niuma-help</a><span class="desc">— 牛马AI产品使用引导与帮助</span></li>
+<li><a href="./03-提示词与AI/project-init">project-init</a><span class="desc">— 项目初始化引导，需求拆解到目录结构搭建</span></li>
 <li><a href="./03-提示词与AI/thinking-coach">thinking-coach</a><span class="desc">— AI 思维私教：费曼对练 / AI 拷问 / 实战模拟</span></li>
+<li><a href="./03-提示词与AI/workflow-automator">workflow-automator</a><span class="desc">— 自动化工作流编排，CI/CD/脚本/定时任务</span></li>
 <li><a href="./03-提示词与AI/虚构角色智能体生成器">虚构角色智能体生成器</a><span class="desc">— 将技能需求转化为有完整世界观的虚构角色 System Prompt</span></li>
 <li><a href="./03-提示词与AI/视觉风格提示词">视觉风格提示词</a><span class="desc">— 学习任意创作者视觉风格并生成匹配图片提示词</span></li>
 </ul>
 
-<h2>效率工具 <span class="count">(3)</span></h2>
+<h2>效率工具 <span class="count">(20)</span></h2>
 <ul class="skill-list">
 <li><a href="./04-效率工具/X搜索语法生成器">X搜索语法生成器</a><span class="desc">— 自然语言描述自动生成 X 平台高级搜索语法</span></li>
+<li><a href="./04-效率工具/baoyu-compress-image">baoyu-compress-image</a><span class="desc">— 图片压缩为 WebP 或 PNG 格式</span></li>
+<li><a href="./04-效率工具/baoyu-danger-gemini-web">baoyu-danger-gemini-web</a><span class="desc">— 通过逆向 Gemini Web API 生成图片和文本</span></li>
+<li><a href="./04-效率工具/baoyu-danger-x-to-markdown">baoyu-danger-x-to-markdown</a><span class="desc">— X/Twitter 推文和文章转 Markdown</span></li>
+<li><a href="./04-效率工具/baoyu-format-markdown">baoyu-format-markdown</a><span class="desc">— 格式化文本和 Markdown 文件</span></li>
+<li><a href="./04-效率工具/baoyu-markdown-to-html">baoyu-markdown-to-html</a><span class="desc">— Markdown 转带样式的 HTML</span></li>
+<li><a href="./04-效率工具/baoyu-url-to-markdown">baoyu-url-to-markdown</a><span class="desc">— 抓取 URL 并转换为 Markdown</span></li>
+<li><a href="./04-效率工具/deepl">deepl</a><span class="desc">— 通过 DeepL API 翻译文本和文档</span></li>
+<li><a href="./04-效率工具/docx">docx</a><span class="desc">— 创建、读取、编辑 Word 文档</span></li>
+<li><a href="./04-效率工具/feishu-doc-reader">feishu-doc-reader</a><span class="desc">— 通过飞书开放 API 读取文档内容</span></li>
+<li><a href="./04-效率工具/ffmpeg-usage">ffmpeg-usage</a><span class="desc">— 基于 FFmpeg 的音视频处理（转换/拼接/压缩）</span></li>
+<li><a href="./04-效率工具/imagemagick-conversion">imagemagick-conversion</a><span class="desc">— ImageMagick 图片转换和处理</span></li>
 <li><a href="./04-效率工具/jc-plan">jc-plan</a><span class="desc">— AI 任务管家：自然语言记录、智能排程、到点提醒</span></li>
 <li><a href="./04-效率工具/jc-zhuagongzhonghao">jc-zhuagongzhonghao</a><span class="desc">— 公众号热文抓取与 Wilson Score 智能评分报告</span></li>
+<li><a href="./04-效率工具/pdf">pdf</a><span class="desc">— PDF 文件读取、提取和操作</span></li>
+<li><a href="./04-效率工具/ppocrv5">ppocrv5</a><span class="desc">— 图片/PDF 文字识别（OCR）</span></li>
+<li><a href="./04-效率工具/pptx">pptx</a><span class="desc">— 创建、编辑、处理 PowerPoint 文件</span></li>
+<li><a href="./04-效率工具/web-artifacts-builder">web-artifacts-builder</a><span class="desc">— 创建多组件 HTML 制品</span></li>
+<li><a href="./04-效率工具/webapp-testing">webapp-testing</a><span class="desc">— 基于 Playwright 的本地 Web 应用测试</span></li>
+<li><a href="./04-效率工具/xlsx">xlsx</a><span class="desc">— 创建和编辑电子表格文件</span></li>
 </ul>
 
-<h2>视觉与设计 <span class="count">(4)</span></h2>
+<h2>视觉与设计 <span class="count">(18)</span></h2>
 <ul class="skill-list">
 <li><a href="./05-视觉与设计/NanoBanana-PPT-Skills">NanoBanana-PPT-Skills</a><span class="desc">— AI 自动生成高质量 PPT 图片和视频</span></li>
+<li><a href="./05-视觉与设计/algorithmic-art">algorithmic-art</a><span class="desc">— 使用 p5.js 创建算法艺术</span></li>
+<li><a href="./05-视觉与设计/baoyu-article-illustrator">baoyu-article-illustrator</a><span class="desc">— 分析文章结构，自动生成配图插图</span></li>
+<li><a href="./05-视觉与设计/baoyu-comic">baoyu-comic</a><span class="desc">— 知识漫画创作，支持多种画风和基调</span></li>
+<li><a href="./05-视觉与设计/baoyu-cover-image">baoyu-cover-image</a><span class="desc">— 文章封面图生成，5维度组合调参</span></li>
+<li><a href="./05-视觉与设计/baoyu-image-gen">baoyu-image-gen</a><span class="desc">— AI 图片生成（OpenAI/Google/DashScope）</span></li>
+<li><a href="./05-视觉与设计/baoyu-infographic">baoyu-infographic</a><span class="desc">— 专业信息图生成，20种布局×17种风格</span></li>
+<li><a href="./05-视觉与设计/baoyu-slide-deck">baoyu-slide-deck</a><span class="desc">— 幻灯片图片批量生成</span></li>
+<li><a href="./05-视觉与设计/baoyu-xhs-images">baoyu-xhs-images</a><span class="desc">— 小红书风格系列信息图生成</span></li>
+<li><a href="./05-视觉与设计/canvas-design">canvas-design</a><span class="desc">— 创建精美 Canvas 视觉艺术作品</span></li>
+<li><a href="./05-视觉与设计/frontend-design">frontend-design</a><span class="desc">— 创建高品质前端界面设计</span></li>
+<li><a href="./05-视觉与设计/gemini-image">gemini-image</a><span class="desc">— 通过 Gemini 生成图片</span></li>
 <li><a href="./05-视觉与设计/magazine-cover">magazine-cover</a><span class="desc">— 杂志风格封面图片生成（黑白极简编辑风格）</span></li>
+<li><a href="./05-视觉与设计/remotion-video">remotion-video</a><span class="desc">— 使用 Remotion 框架以编程方式创建视频</span></li>
+<li><a href="./05-视觉与设计/slack-gif-creator">slack-gif-creator</a><span class="desc">— 创建适用于 Slack 的动画 GIF</span></li>
+<li><a href="./05-视觉与设计/theme-factory">theme-factory</a><span class="desc">— 为制品应用主题样式（幻灯片/文档/页面）</span></li>
 <li><a href="./05-视觉与设计/video-creator">video-creator</a><span class="desc">— 图片 + 音频合成视频，支持转场和 BGM</span></li>
 <li><a href="./05-视觉与设计/video-optimize">video-optimize</a><span class="desc">— 爆款视频拆解与优化专家（8维度拆解）</span></li>
 </ul>
 
-<h2>发布与平台 <span class="count">(7)</span></h2>
+<h2>发布与平台 <span class="count">(9)</span></h2>
 <ul class="skill-list">
 <li><a href="./06-发布与平台/anything-to-notebooklm">anything-to-notebooklm</a><span class="desc">— 多源内容智能处理，上传 NotebookLM 生成播客/PPT/思维导图</span></li>
+<li><a href="./06-发布与平台/baoyu-post-to-wechat">baoyu-post-to-wechat</a><span class="desc">— 发布内容到微信公众号</span></li>
+<li><a href="./06-发布与平台/baoyu-post-to-x">baoyu-post-to-x</a><span class="desc">— 发布推文和文章到 X/Twitter</span></li>
 <li><a href="./06-发布与平台/crc-offer-cover">crc-offer-cover</a><span class="desc">— 生成 CRC 视觉风格 Offer 封面图文案</span></li>
 <li><a href="./06-发布与平台/crc-offer-post">crc-offer-post</a><span class="desc">— CRC 学员 Offer 小红书帖子全流程生成</span></li>
 <li><a href="./06-发布与平台/follow-builders">follow-builders</a><span class="desc">— AI builders 行业动态摘要</span></li>
