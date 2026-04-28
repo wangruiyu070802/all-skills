@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Skills — 牛马AI技能仓库</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "Segoe UI", "Noto Sans SC", sans-serif; background: #f8f9fa; color: #1a1a1a; padding: 40px 20px; }
+.container { max-width: 960px; margin: 0 auto; }
+h1 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+.subtitle { color: #666; font-size: 14px; margin-bottom: 32px; }
+h2 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e0e0e0; }
+.skill-list { list-style: none; }
+.skill-list li { padding: 6px 0; display: flex; align-items: baseline; gap: 8px; }
+.skill-list li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #888; flex-shrink: 0; }
+a { color: #2563eb; text-decoration: none; font-size: 14px; font-weight: 500; }
+a:hover { text-decoration: underline; }
+.desc { color: #555; font-size: 13px; }
+.count { color: #999; font-size: 12px; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>All Skills</h1>
+<p class="subtitle">牛马AI 技能仓库 · <span id="total"></span></p>
+
+<h2>写作与内容 <span class="count">(20)</span></h2>
+<ul class="skill-list">
+<li><a href="./01-写作与内容/AI贴片文案生成器">AI贴片文案生成器</a><span class="desc">— 从播客、文章、长内容素材中产出AI贴片视频文案</span></li>
+<li><a href="./01-写作与内容/blog-post-writer">blog-post-writer</a><span class="desc">— 将零散想法或原始文章转化为指定风格的公众号文章</span></li>
+<li><a href="./01-写作与内容/dao-fa-shu-qi">dao-fa-shu-qi</a><span class="desc">— 道法术器拆解器，用第一人称口述视角深度拆解内容</span></li>
+<li><a href="./01-写作与内容/doc-coauthoring">doc-coauthoring</a><span class="desc">— 通过结构化工作流协作文档、提案、技术规格</span></li>
+<li><a href="./01-写作与内容/dontbesilent爆款选题生成器">dontbesilent爆款选题生成器</a><span class="desc">— 基于 dontbesilent 推文库生成短视频爆款选题卡片</span></li>
+<li><a href="./01-写作与内容/jc-jiaocheng">jc-jiaocheng</a><span class="desc">— 写出「读完就能动」的教程和行动手册</span></li>
+<li><a href="./01-写作与内容/jincheng-pyq">jincheng-pyq</a><span class="desc">— 何锦成朋友圈风格文案生成与优化</span></li>
+<li><a href="./01-写作与内容/khazix-writer">khazix-writer</a><span class="desc">— 数字生命卡兹克公众号长文写作</span></li>
+<li><a href="./01-写作与内容/self-intro-writer">self-intro-writer</a><span class="desc">— 生成不同场景的自我介绍文案</span></li>
+<li><a href="./01-写作与内容/xiaojiang">xiaojiang</a><span class="desc">— 基于「销讲六段式」撰写私域直播销讲稿</span></li>
+<li><a href="./01-写作与内容/yanjiang">yanjiang</a><span class="desc">— 演讲稿与分享稿打磨工具（建稿/打磨/诊断）</span></li>
+<li><a href="./01-写作与内容/五步写作法">五步写作法</a><span class="desc">— 两阶段写作辅助：生成备选标题 + 五步写作法拆解</span></li>
+<li><a href="./01-写作与内容/写作智能体">写作智能体</a><span class="desc">— 创建、分析和优化写作智能体的系统提示词</span></li>
+<li><a href="./01-写作与内容/咨询逐字稿分析器">咨询逐字稿分析器</a><span class="desc">— 从留学求职咨询逐字稿中提取决策心理洞察</span></li>
+<li><a href="./01-写作与内容/商业评论-dontbesilent文风">商业评论-dontbesilent文风</a><span class="desc">— 模仿 dontbesilent 冷酷商业评论文风</span></li>
+<li><a href="./01-写作与内容/文风DNA分析">文风DNA分析</a><span class="desc">— 多维度文风DNA量化编码与哲学级解析</span></li>
+<li><a href="./01-写作与内容/案例拆解生成器">案例拆解生成器</a><span class="desc">— 将案例/方法/工具快速拆解成结构化内容</span></li>
+<li><a href="./01-写作与内容/爆款开头生成器">爆款开头生成器</a><span class="desc">— 基于叙事模型生成爆款短视频开头文案</span></li>
+<li><a href="./01-写作与内容/爆款标题大师">爆款标题大师</a><span class="desc">— 基于八大故事模型生成多角度爆款标题</span></li>
+<li><a href="./01-写作与内容/私戳作业批改">私戳作业批改</a><span class="desc">— 批改战队成员私戳聊天记录，输出四段式培训分析</span></li>
+</ul>
+
+<h2>商业思维 <span class="count">(15)</span></h2>
+<ul class="skill-list">
+<li><a href="./02-商业思维/chatroom-austrian">chatroom-austrian</a><span class="desc">— 哈耶克 × 米塞斯 × Claude 奥派经济学三人对话</span></li>
+<li><a href="./02-商业思维/dbs">dbs</a><span class="desc">— dontbesilent 商业工具箱主入口，自动路由诊断工具</span></li>
+<li><a href="./02-商业思维/dbs-action">dbs-action</a><span class="desc">— 用阿德勒心理学诊断执行力问题</span></li>
+<li><a href="./02-商业思维/dbs-benchmark">dbs-benchmark</a><span class="desc">— 五重过滤法找到值得模仿的对标</span></li>
+<li><a href="./02-商业思维/dbs-content">dbs-content</a><span class="desc">— 选题通过后诊断怎么做成好内容</span></li>
+<li><a href="./02-商业思维/dbs-deconstruct">dbs-deconstruct</a><span class="desc">— 维特根斯坦 + 奥派经济学拆解模糊商业概念</span></li>
+<li><a href="./02-商业思维/dbs-diagnosis">dbs-diagnosis</a><span class="desc">— 商业模式诊断：问诊模式 + 体检模式</span></li>
+<li><a href="./02-商业思维/dbs-hook">dbs-hook</a><span class="desc">— 短视频开头诊断与优化方案生成</span></li>
+<li><a href="./02-商业思维/dbs-xhs-title">dbs-xhs-title</a><span class="desc">— 从75个验证过的爆款公式中选对小红书标题</span></li>
+<li><a href="./02-商业思维/interpersonal-reflection-coach">interpersonal-reflection-coach</a><span class="desc">— 人际关系沟通反思教练，分析事件并给出策略</span></li>
+<li><a href="./02-商业思维/office-hours">office-hours</a><span class="desc">— YC Office Hours：创业问诊与设计思维头脑风暴</span></li>
+<li><a href="./02-商业思维/shizhanying-coach">shizhanying-coach</a><span class="desc">— 实战营AI教练，诊断学员状态并输出个性化策略</span></li>
+<li><a href="./02-商业思维/siyuliebian">siyuliebian</a><span class="desc">— 私域裂变发售全流程操盘助手</span></li>
+<li><a href="./02-商业思维/university-planner">university-planner</a><span class="desc">— 多元宇宙大学规划智能体，7阶段对话生成四年规划</span></li>
+<li><a href="./02-商业思维/行业研究">行业研究</a><span class="desc">— 系统性行业研究分析框架</span></li>
+</ul>
+
+<h2>提示词与AI <span class="count">(8)</span></h2>
+<ul class="skill-list">
+<li><a href="./03-提示词与AI/AI方法论学习器">AI方法论学习器</a><span class="desc">— 从别人AI使用素材中提炼可复用方法论和技巧</span></li>
+<li><a href="./03-提示词与AI/BROK提示词优化器">BROK提示词优化器</a><span class="desc">— 用 BROK 框架分析、优化或从零创建提示词</span></li>
+<li><a href="./03-提示词与AI/ai-yuyi">ai-yuyi</a><span class="desc">— AI 使用水平诊断与提升教练</span></li>
+<li><a href="./03-提示词与AI/interactive-learning">interactive-learning</a><span class="desc">— 基于 Bloom 2 Sigma 理论的一对一交互式学习系统</span></li>
+<li><a href="./03-提示词与AI/jc-clarifier">jc-clarifier</a><span class="desc">— 万能问题澄清器，模糊需求 → 清晰提示词</span></li>
+<li><a href="./03-提示词与AI/thinking-coach">thinking-coach</a><span class="desc">— AI 思维私教：费曼对练 / AI 拷问 / 实战模拟</span></li>
+<li><a href="./03-提示词与AI/虚构角色智能体生成器">虚构角色智能体生成器</a><span class="desc">— 将技能需求转化为有完整世界观的虚构角色 System Prompt</span></li>
+<li><a href="./03-提示词与AI/视觉风格提示词">视觉风格提示词</a><span class="desc">— 学习任意创作者视觉风格并生成匹配图片提示词</span></li>
+</ul>
+
+<h2>效率工具 <span class="count">(3)</span></h2>
+<ul class="skill-list">
+<li><a href="./04-效率工具/X搜索语法生成器">X搜索语法生成器</a><span class="desc">— 自然语言描述自动生成 X 平台高级搜索语法</span></li>
+<li><a href="./04-效率工具/jc-plan">jc-plan</a><span class="desc">— AI 任务管家：自然语言记录、智能排程、到点提醒</span></li>
+<li><a href="./04-效率工具/jc-zhuagongzhonghao">jc-zhuagongzhonghao</a><span class="desc">— 公众号热文抓取与 Wilson Score 智能评分报告</span></li>
+</ul>
+
+<h2>视觉与设计 <span class="count">(4)</span></h2>
+<ul class="skill-list">
+<li><a href="./05-视觉与设计/NanoBanana-PPT-Skills">NanoBanana-PPT-Skills</a><span class="desc">— AI 自动生成高质量 PPT 图片和视频</span></li>
+<li><a href="./05-视觉与设计/magazine-cover">magazine-cover</a><span class="desc">— 杂志风格封面图片生成（黑白极简编辑风格）</span></li>
+<li><a href="./05-视觉与设计/video-creator">video-creator</a><span class="desc">— 图片 + 音频合成视频，支持转场和 BGM</span></li>
+<li><a href="./05-视觉与设计/video-optimize">video-optimize</a><span class="desc">— 爆款视频拆解与优化专家（8维度拆解）</span></li>
+</ul>
+
+<h2>发布与平台 <span class="count">(7)</span></h2>
+<ul class="skill-list">
+<li><a href="./06-发布与平台/anything-to-notebooklm">anything-to-notebooklm</a><span class="desc">— 多源内容智能处理，上传 NotebookLM 生成播客/PPT/思维导图</span></li>
+<li><a href="./06-发布与平台/crc-offer-cover">crc-offer-cover</a><span class="desc">— 生成 CRC 视觉风格 Offer 封面图文案</span></li>
+<li><a href="./06-发布与平台/crc-offer-post">crc-offer-post</a><span class="desc">— CRC 学员 Offer 小红书帖子全流程生成</span></li>
+<li><a href="./06-发布与平台/follow-builders">follow-builders</a><span class="desc">— AI builders 行业动态摘要</span></li>
+<li><a href="./06-发布与平台/x-article-publisher">x-article-publisher</a><span class="desc">— 将 Markdown 文章发布到 X (Twitter) Articles</span></li>
+<li><a href="./06-发布与平台/小红书留学求职ip号帖子改编">小红书留学求职ip号帖子改编</a><span class="desc">— 基于人设和参考文章进行换皮仿写</span></li>
+<li><a href="./06-发布与平台/投流帖改写">投流帖改写</a><span class="desc">— 将竞品投流帖改编为橙然 CRC 版本</span></li>
+</ul>
+
+<script>document.getElementById('total').textContent = '共 ' + document.querySelectorAll('.skill-list li').length + ' 个技能';</script>
+</div>
+</body>
+</html>

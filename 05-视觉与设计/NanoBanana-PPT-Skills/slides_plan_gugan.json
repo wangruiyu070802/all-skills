@@ -1,0 +1,16 @@
+{
+  "title": "骨干培训提问",
+  "total_slides": 2,
+  "slides": [
+    {
+      "slide_number": 1,
+      "page_type": "content",
+      "content": "问题一、你为什么要参加这次实战营"
+    },
+    {
+      "slide_number": 2,
+      "page_type": "content",
+      "content": "问题二、你为什么要参加这次实战营"
+    }
+  ]
+}

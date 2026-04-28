@@ -1,0 +1,16 @@
+{
+  "title": "骨干小灶互动问题",
+  "total_slides": 2,
+  "slides": [
+    {
+      "slide_number": 1,
+      "page_type": "content",
+      "content": "问题一、\n你为什么要参加\n这次实战营？"
+    },
+    {
+      "slide_number": 2,
+      "page_type": "content",
+      "content": "问题二、\n你为什么要参加\n这次实战营？"
+    }
+  ]
+}
