@@ -1,0 +1,23 @@
+# 工具附录
+
+主体管线是工具无关的，本文件是当前工具栈（小云雀 Seedance 2.0 + 剪映 + ffmpeg）的具体规范。换工具只改这一份。
+
+## 小云雀（Seedance 2.0）— AI 视频生成
+
+- 地址：https://xiaoyunque.jianying.com/（「沉浸式短片」模式）
+- 单次生成 4-15s（5-10s 最稳定）；分辨率 720p-1080p；比例 16:9 / 9:16
+- 提示词公式（七要素）：`[主体] + [环境/氛围] + [动作] + [镜头语言] + [音效] + [风格] + [画质]`
+- 分时段格式（>6s 强制）：0-3s / 3-6s / 6-10s / 10-15s 各写一段
+- @引用语法：`@图片1 作为首帧` / `参考 @视频1 的运镜` / `BGM参考 @音频1`
+- 禁止：写实真人脸部、明星脸、未授权 IP、4-5s 塞多场景、模糊引用（写清「参考@视频1的运镜」而非「参考@视频1」）
+
+## ffmpeg — 程序化粗剪
+
+- 用 Git Bash 跑（不是 PowerShell），Windows 路径先 `export MSYS2_ARG_CONV_EXCL="*"`
+- 三件套：concat 拼接（filter_complex 统一 scale/format）→ eq 调色 → drawtext 字幕
+- 中文字幕字体：`/c/Windows/Fonts/NotoSerifSC-VF.ttf`
+
+## 剪映 / CapCut — 手动拼接
+
+- ffmpeg 做不了的都在这：转场（只用硬切+交叉淡化）、旁白录音、BGM、并置蒙版、导出
+- 导出：MP4 H.264，1920×1080，24fps，15-20 Mbps，AAC 320kbps

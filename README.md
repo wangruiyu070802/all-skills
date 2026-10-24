@@ -2,7 +2,7 @@
 
 牛马AI技能仓库。每个 skill 文件夹包含一个 SKILL.md 文件，可直接放入 `~/.newmax/skills/` 使用。
 
-总计 **102** 个技能。
+总计 **103** 个技能。
 
 ---
 
@@ -93,8 +93,9 @@
 - [webapp-testing](./04-效率工具/webapp-testing) — 基于 Playwright 的本地 Web 应用测试
 - [xlsx](./04-效率工具/xlsx) — 创建和编辑电子表格文件
 
-## 视觉与设计 (18)
+## 视觉与设计 (19)
 
+- [ai-video-production](./05-视觉与设计/ai-video-production) — AI 短视频全流程生产管线，多 Agent 协作端到端成片
 - [NanoBanana-PPT-Skills](./05-视觉与设计/NanoBanana-PPT-Skills) — AI 自动生成高质量 PPT 图片和视频
 - [algorithmic-art](./05-视觉与设计/algorithmic-art) — 使用 p5.js 创建算法艺术
 - [baoyu-article-illustrator](./05-视觉与设计/baoyu-article-illustrator) — 分析文章结构，自动生成配图插图
