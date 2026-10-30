@@ -1,6 +1,6 @@
 # All Skills
 
-牛马AI技能仓库。每个 skill 文件夹包含一个 SKILL.md 文件，可直接放入 `~/.newmax/skills/` 使用。
+AI技能仓库。每个 skill 文件夹包含一个 SKILL.md 文件，可直接放入 `~/.claude/skills/` 使用。
 
 总计 **103** 个技能。
 
