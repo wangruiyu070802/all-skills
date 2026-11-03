@@ -1,158 +1,582 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Skills — 牛马AI技能仓库</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All Skills · 技能库</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, "Segoe UI", "Noto Sans SC", sans-serif; background: #f8f9fa; color: #1a1a1a; padding: 40px 20px; }
-.container { max-width: 960px; margin: 0 auto; }
-h1 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
-.subtitle { color: #666; font-size: 14px; margin-bottom: 32px; }
-h2 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e0e0e0; }
-.skill-list { list-style: none; }
-.skill-list li { padding: 5px 0; display: flex; align-items: baseline; gap: 8px; }
-.skill-list li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #888; flex-shrink: 0; }
-a { color: #2563eb; text-decoration: none; font-size: 14px; font-weight: 500; }
-a:hover { text-decoration: underline; }
-.desc { color: #555; font-size: 13px; }
-.count { color: #999; font-size: 12px; margin-left: 4px; }
+  :root{
+    --bg:#fbfbfa;
+    --surface:#ffffff;
+    --border:#e8e6e3;
+    --text:#1a1a1a;
+    --muted:#6f6b66;
+    --accent:#2563eb;
+    --accent-soft:#eef4ff;
+    --shadow:0 1px 2px rgba(0,0,0,.04), 0 10px 28px rgba(0,0,0,.05);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1011;
+      --surface:#17181a;
+      --border:#2a2c30;
+      --text:#ececec;
+      --muted:#9b9893;
+      --accent:#7aa2ff;
+      --accent-soft:#1b2740;
+      --shadow:0 1px 2px rgba(0,0,0,.35), 0 10px 28px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+  /* header */
+  header{padding:56px 0 26px}
+  .head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+  h1{margin:0 0 8px;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+  .sub{margin:0;color:var(--muted);font-size:13.5px}
+  .sub b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+  .gh{
+    flex:none;display:inline-flex;align-items:center;gap:6px;
+    height:34px;padding:0 13px;border:1px solid var(--border);border-radius:999px;
+    color:var(--muted);font-size:13px;transition:color .15s,border-color .15s,background .15s;
+  }
+  .gh:hover{color:var(--text);border-color:var(--muted);background:var(--surface)}
+
+  /* toolbar */
+  .toolbar{
+    position:sticky;top:0;z-index:20;
+    padding:14px 0 12px;margin-bottom:8px;
+    border-bottom:1px solid var(--border);
+    background:var(--bg);
+    background:color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter:saturate(1.4) blur(14px);
+  }
+  .search{position:relative;display:flex;align-items:center}
+  .search .icon{
+    position:absolute;left:14px;width:17px;height:17px;color:var(--muted);pointer-events:none;
+  }
+  #q{
+    width:100%;height:46px;
+    padding:0 92px 0 42px;
+    border:1px solid var(--border);border-radius:12px;
+    background:var(--surface);color:var(--text);
+    font:inherit;font-size:15px;
+    outline:none;transition:border-color .15s,box-shadow .15s;
+  }
+  #q::placeholder{color:var(--muted);opacity:.8}
+  #q::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+  #q:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .hint{
+    position:absolute;right:12px;display:flex;align-items:center;gap:6px;
+    color:var(--muted);font-size:11.5px;pointer-events:none;
+  }
+  kbd{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:20px;height:20px;padding:0 5px;
+    border:1px solid var(--border);border-radius:5px;
+    background:var(--bg);font:11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  }
+  #clear{
+    position:absolute;right:10px;width:26px;height:26px;padding:0;
+    display:none;align-items:center;justify-content:center;
+    border:0;border-radius:50%;background:transparent;color:var(--muted);cursor:pointer;
+  }
+  #clear:hover{background:var(--border);color:var(--text)}
+  #clear.on{display:flex}
+  #clear.on + .hint{display:none}
+
+  .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .pill{
+    height:32px;padding:0 13px;
+    display:inline-flex;align-items:center;gap:7px;
+    border:1px solid var(--border);border-radius:999px;
+    background:transparent;color:var(--muted);
+    font:inherit;font-size:13px;cursor:pointer;
+    transition:color .15s,border-color .15s,background .15s;
+  }
+  .pill:hover{color:var(--text);border-color:var(--muted)}
+  .pill[aria-pressed="true"]{
+    background:var(--accent);border-color:var(--accent);color:#fff;
+  }
+  @media (prefers-color-scheme: dark){
+    .pill[aria-pressed="true"]{color:#0b0c0d}
+  }
+  .pill .n{font-size:11.5px;opacity:.6;font-variant-numeric:tabular-nums}
+  .pill[aria-pressed="true"] .n{opacity:.85}
+
+  .result{
+    min-height:20px;margin:18px 0 2px;
+    color:var(--muted);font-size:12.5px;
+  }
+  .result:empty{display:none}
+  .result b{color:var(--text);font-weight:600}
+
+  /* sections & grid */
+  .cat{display:flex;align-items:center;gap:10px;margin:34px 0 14px}
+  .cat .bar{width:3px;height:15px;border-radius:2px;background:var(--c);flex:none}
+  .cat h2{margin:0;font-size:14px;font-weight:600;letter-spacing:.01em}
+  .cat .n{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+    gap:12px;
+  }
+  .card{
+    position:relative;
+    display:flex;flex-direction:column;gap:8px;
+    padding:15px 16px 13px;
+    border:1px solid var(--border);border-radius:var(--radius);
+    background:var(--surface);
+    transition:border-color .15s,box-shadow .15s,transform .15s;
+  }
+  .card:hover{border-color:var(--muted);box-shadow:var(--shadow);transform:translateY(-1px)}
+  .card .top{display:flex;align-items:flex-start;gap:10px}
+  .card h3{
+    margin:0;font-size:15px;line-height:1.4;font-weight:600;
+    word-break:break-word;
+  }
+  .card h3 a{transition:color .15s}
+  .card h3 a:hover{color:var(--accent)}
+  .card h3 a .ext{
+    display:inline-block;width:11px;height:11px;margin-left:5px;
+    opacity:0;transition:opacity .15s;vertical-align:-1px;color:var(--accent);
+  }
+  .card:hover h3 a .ext{opacity:.8}
+  .card .desc{
+    margin:0;color:var(--muted);font-size:13.5px;line-height:1.62;
+  }
+  .card .foot{
+    display:flex;align-items:center;gap:7px;
+    margin-top:auto;padding-top:6px;
+    color:var(--muted);font-size:11.5px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--c);flex:none}
+  .sep{opacity:.45}
+  .path{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;opacity:.8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  .copy{
+    flex:none;width:26px;height:26px;margin:-2px -4px 0 auto;padding:0;
+    display:inline-flex;align-items:center;justify-content:center;
+    border:1px solid transparent;border-radius:7px;
+    background:transparent;color:var(--muted);cursor:pointer;
+    opacity:0;transition:opacity .15s,background .15s,color .15s;
+  }
+  .card:hover .copy,.copy:focus-visible{opacity:1}
+  .copy:hover{background:var(--bg);border-color:var(--border);color:var(--text)}
+  @media (hover:none){.copy{opacity:1}}
+
+  mark{background:var(--accent-soft);color:var(--accent);border-radius:3px;padding:0 2px;font-weight:600}
+
+  .empty{
+    padding:72px 0;text-align:center;color:var(--muted);font-size:14px;
+  }
+  .empty strong{display:block;margin-bottom:6px;color:var(--text);font-size:15px;font-weight:600}
+  .empty button{
+    margin-top:14px;height:32px;padding:0 14px;
+    border:1px solid var(--border);border-radius:999px;
+    background:var(--surface);color:var(--text);font:inherit;font-size:13px;cursor:pointer;
+  }
+  .empty button:hover{border-color:var(--muted)}
+
+  footer{
+    margin-top:64px;padding:24px 0 40px;
+    border-top:1px solid var(--border);
+    color:var(--muted);font-size:12px;
+  }
+
+  #toast{
+    position:fixed;left:50%;bottom:28px;z-index:50;
+    transform:translate(-50%,10px);opacity:0;pointer-events:none;
+    padding:9px 15px;border-radius:10px;
+    background:var(--text);color:var(--bg);
+    font-size:13px;white-space:nowrap;
+    transition:opacity .18s,transform .18s;
+  }
+  #toast.on{opacity:1;transform:translate(-50%,0)}
+
+  @media (max-width:640px){
+    .wrap{padding:0 16px}
+    header{padding:38px 0 20px}
+    h1{font-size:24px}
+    .gh{display:none}
+    .grid{grid-template-columns:1fr}
+    .hint{display:none}
+    #q{padding-right:44px}
+    .cat{margin:26px 0 12px}
+    .result{margin:14px 0 0}
+    /* 手机上分类条改成单行横向滚动，避免吸顶区域占掉半屏 */
+    .pills{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;margin:12px -16px 0;padding:0 16px 2px}
+    .pills::-webkit-scrollbar{display:none}
+    .pill{flex:none}
+  }
 </style>
 </head>
 <body>
-<div class="container">
-<h1>All Skills</h1>
-<p class="subtitle">牛马AI 技能仓库 · <span id="total"></span></p>
 
-<h2>写作与内容 <span class="count">(26)</span></h2>
-<ul class="skill-list">
-<li><a href="./01-写作与内容/AI贴片文案生成器">AI贴片文案生成器</a><span class="desc">— 从播客、文章、长内容素材中产出AI贴片视频文案</span></li>
-<li><a href="./01-写作与内容/blog-post-writer">blog-post-writer</a><span class="desc">— 将零散想法或原始文章转化为指定风格的公众号文章</span></li>
-<li><a href="./01-写作与内容/brand-guidelines">brand-guidelines</a><span class="desc">— 应用品牌配色和排版到各类内容制品</span></li>
-<li><a href="./01-写作与内容/daily-review">daily-review</a><span class="desc">— 每日工作回顾与洞察分析，总结改进建议</span></li>
-<li><a href="./01-写作与内容/dao-fa-shu-qi">dao-fa-shu-qi</a><span class="desc">— 道法术器拆解器，用第一人称口述视角深度拆解内容</span></li>
-<li><a href="./01-写作与内容/deep-review">deep-review</a><span class="desc">— 深度工作分析与项目洞察，长期维度总结</span></li>
-<li><a href="./01-写作与内容/doc-coauthoring">doc-coauthoring</a><span class="desc">— 通过结构化工作流协作文档、提案、技术规格</span></li>
-<li><a href="./01-写作与内容/dontbesilent爆款选题生成器">dontbesilent爆款选题生成器</a><span class="desc">— 基于 dontbesilent 推文库生成短视频爆款选题卡片</span></li>
-<li><a href="./01-写作与内容/internal-comms">internal-comms</a><span class="desc">— 内部沟通文案写作模板与格式</span></li>
-<li><a href="./01-写作与内容/jc-jiaocheng">jc-jiaocheng</a><span class="desc">— 写出「读完就能动」的教程和行动手册</span></li>
-<li><a href="./01-写作与内容/jincheng-pyq">jincheng-pyq</a><span class="desc">— 何锦成朋友圈风格文案生成与优化</span></li>
-<li><a href="./01-写作与内容/khazix-writer">khazix-writer</a><span class="desc">— 数字生命卡兹克公众号长文写作</span></li>
-<li><a href="./01-写作与内容/long-term-plan">long-term-plan</a><span class="desc">— 创建和管理长期项目计划文档</span></li>
-<li><a href="./01-写作与内容/self-intro-writer">self-intro-writer</a><span class="desc">— 生成不同场景（私聊、社群、朋友圈、商务）的自我介绍</span></li>
-<li><a href="./01-写作与内容/skill-creator">skill-creator</a><span class="desc">— 创建和更新技能（Skill）的完整指南</span></li>
-<li><a href="./01-写作与内容/xiaojiang">xiaojiang</a><span class="desc">— 基于「销讲六段式」撰写私域直播销讲稿</span></li>
-<li><a href="./01-写作与内容/yanjiang">yanjiang</a><span class="desc">— 演讲稿与分享稿打磨工具（建稿/打磨/诊断）</span></li>
-<li><a href="./01-写作与内容/五步写作法">五步写作法</a><span class="desc">— 两阶段写作辅助：生成备选标题 + 五步写作法拆解</span></li>
-<li><a href="./01-写作与内容/写作智能体">写作智能体</a><span class="desc">— 创建、分析和优化写作智能体的系统提示词</span></li>
-<li><a href="./01-写作与内容/咨询逐字稿分析器">咨询逐字稿分析器</a><span class="desc">— 从留学求职咨询逐字稿中提取决策心理洞察</span></li>
-<li><a href="./01-写作与内容/商业评论-dontbesilent文风">商业评论-dontbesilent文风</a><span class="desc">— 模仿 dontbesilent 冷酷商业评论文风</span></li>
-<li><a href="./01-写作与内容/文风DNA分析">文风DNA分析</a><span class="desc">— 多维度文风DNA量化编码与哲学级解析</span></li>
-<li><a href="./01-写作与内容/案例拆解生成器">案例拆解生成器</a><span class="desc">— 将案例/方法/工具快速拆解成结构化内容</span></li>
-<li><a href="./01-写作与内容/爆款开头生成器">爆款开头生成器</a><span class="desc">— 基于叙事模型生成爆款短视频开头文案</span></li>
-<li><a href="./01-写作与内容/爆款标题大师">爆款标题大师</a><span class="desc">— 基于八大故事模型生成多角度爆款标题</span></li>
-<li><a href="./01-写作与内容/私戳作业批改">私戳作业批改</a><span class="desc">— 批改战队成员私戳聊天记录，输出四段式培训分析</span></li>
-</ul>
+<header>
+  <div class="wrap head">
+    <div>
+      <h1>All Skills</h1>
+      <p class="sub"><b id="total">0</b> 个技能 · <b>6</b> 个分类 · 搜索按功能描述匹配，点标题进 GitHub 目录，点图标复制路径</p>
+    </div>
+    <a class="gh" href="https://github.com/wangruiyu070802/all-skills" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</header>
 
-<h2>商业思维 <span class="count">(16)</span></h2>
-<ul class="skill-list">
-<li><a href="./02-商业思维/chatroom-austrian">chatroom-austrian</a><span class="desc">— 哈耶克 × 米塞斯 × Claude 奥派经济学三人对话</span></li>
-<li><a href="./02-商业思维/data-analysis">data-analysis</a><span class="desc">— 全链路数据分析，支持表格/文档/图像处理</span></li>
-<li><a href="./02-商业思维/dbs">dbs</a><span class="desc">— dontbesilent 商业工具箱主入口，自动路由诊断工具</span></li>
-<li><a href="./02-商业思维/dbs-action">dbs-action</a><span class="desc">— 用阿德勒心理学诊断执行力问题</span></li>
-<li><a href="./02-商业思维/dbs-benchmark">dbs-benchmark</a><span class="desc">— 五重过滤法找到值得模仿的对标</span></li>
-<li><a href="./02-商业思维/dbs-content">dbs-content</a><span class="desc">— 选题通过后诊断怎么做成好内容</span></li>
-<li><a href="./02-商业思维/dbs-deconstruct">dbs-deconstruct</a><span class="desc">— 维特根斯坦 + 奥派经济学拆解模糊商业概念</span></li>
-<li><a href="./02-商业思维/dbs-diagnosis">dbs-diagnosis</a><span class="desc">— 商业模式诊断：问诊模式 + 体检模式</span></li>
-<li><a href="./02-商业思维/dbs-hook">dbs-hook</a><span class="desc">— 短视频开头诊断与优化方案生成</span></li>
-<li><a href="./02-商业思维/dbs-xhs-title">dbs-xhs-title</a><span class="desc">— 从75个验证过的爆款公式中选对小红书标题</span></li>
-<li><a href="./02-商业思维/interpersonal-reflection-coach">interpersonal-reflection-coach</a><span class="desc">— 人际关系沟通反思教练，分析事件并给出策略</span></li>
-<li><a href="./02-商业思维/office-hours">office-hours</a><span class="desc">— YC Office Hours：创业问诊与设计思维头脑风暴</span></li>
-<li><a href="./02-商业思维/shizhanying-coach">shizhanying-coach</a><span class="desc">— 实战营AI教练，诊断学员状态并输出个性化策略</span></li>
-<li><a href="./02-商业思维/siyuliebian">siyuliebian</a><span class="desc">— 私域裂变发售全流程操盘助手</span></li>
-<li><a href="./02-商业思维/university-planner">university-planner</a><span class="desc">— 多元宇宙大学规划智能体，7阶段对话生成四年规划</span></li>
-<li><a href="./02-商业思维/行业研究">行业研究</a><span class="desc">— 系统性行业研究分析框架</span></li>
-</ul>
-
-<h2>提示词与AI <span class="count">(13)</span></h2>
-<ul class="skill-list">
-<li><a href="./03-提示词与AI/AI方法论学习器">AI方法论学习器</a><span class="desc">— 从别人AI使用素材中提炼可复用方法论和技巧</span></li>
-<li><a href="./03-提示词与AI/BROK提示词优化器">BROK提示词优化器</a><span class="desc">— 用 BROK 框架分析、优化或从零创建提示词</span></li>
-<li><a href="./03-提示词与AI/ai-yuyi">ai-yuyi</a><span class="desc">— AI 使用水平诊断与提升教练</span></li>
-<li><a href="./03-提示词与AI/claude-skills-zh-cn">claude-skills-zh-cn</a><span class="desc">— Anthropic Skills 中文翻译集合</span></li>
-<li><a href="./03-提示词与AI/interactive-learning">interactive-learning</a><span class="desc">— 基于 Bloom 2 Sigma 理论的一对一交互式学习系统</span></li>
-<li><a href="./03-提示词与AI/jc-clarifier">jc-clarifier</a><span class="desc">— 万能问题澄清器，模糊需求 → 清晰提示词</span></li>
-<li><a href="./03-提示词与AI/mcp-builder">mcp-builder</a><span class="desc">— 创建高质量 MCP 服务器的完整指南</span></li>
-<li><a href="./03-提示词与AI/niuma-help">niuma-help</a><span class="desc">— 牛马AI产品使用引导与帮助</span></li>
-<li><a href="./03-提示词与AI/project-init">project-init</a><span class="desc">— 项目初始化引导，需求拆解到目录结构搭建</span></li>
-<li><a href="./03-提示词与AI/thinking-coach">thinking-coach</a><span class="desc">— AI 思维私教：费曼对练 / AI 拷问 / 实战模拟</span></li>
-<li><a href="./03-提示词与AI/workflow-automator">workflow-automator</a><span class="desc">— 自动化工作流编排，CI/CD/脚本/定时任务</span></li>
-<li><a href="./03-提示词与AI/虚构角色智能体生成器">虚构角色智能体生成器</a><span class="desc">— 将技能需求转化为有完整世界观的虚构角色 System Prompt</span></li>
-<li><a href="./03-提示词与AI/视觉风格提示词">视觉风格提示词</a><span class="desc">— 学习任意创作者视觉风格并生成匹配图片提示词</span></li>
-</ul>
-
-<h2>效率工具 <span class="count">(20)</span></h2>
-<ul class="skill-list">
-<li><a href="./04-效率工具/X搜索语法生成器">X搜索语法生成器</a><span class="desc">— 自然语言描述自动生成 X 平台高级搜索语法</span></li>
-<li><a href="./04-效率工具/baoyu-compress-image">baoyu-compress-image</a><span class="desc">— 图片压缩为 WebP 或 PNG 格式</span></li>
-<li><a href="./04-效率工具/baoyu-danger-gemini-web">baoyu-danger-gemini-web</a><span class="desc">— 通过逆向 Gemini Web API 生成图片和文本</span></li>
-<li><a href="./04-效率工具/baoyu-danger-x-to-markdown">baoyu-danger-x-to-markdown</a><span class="desc">— X/Twitter 推文和文章转 Markdown</span></li>
-<li><a href="./04-效率工具/baoyu-format-markdown">baoyu-format-markdown</a><span class="desc">— 格式化文本和 Markdown 文件</span></li>
-<li><a href="./04-效率工具/baoyu-markdown-to-html">baoyu-markdown-to-html</a><span class="desc">— Markdown 转带样式的 HTML</span></li>
-<li><a href="./04-效率工具/baoyu-url-to-markdown">baoyu-url-to-markdown</a><span class="desc">— 抓取 URL 并转换为 Markdown</span></li>
-<li><a href="./04-效率工具/deepl">deepl</a><span class="desc">— 通过 DeepL API 翻译文本和文档</span></li>
-<li><a href="./04-效率工具/docx">docx</a><span class="desc">— 创建、读取、编辑 Word 文档</span></li>
-<li><a href="./04-效率工具/feishu-doc-reader">feishu-doc-reader</a><span class="desc">— 通过飞书开放 API 读取文档内容</span></li>
-<li><a href="./04-效率工具/ffmpeg-usage">ffmpeg-usage</a><span class="desc">— 基于 FFmpeg 的音视频处理（转换/拼接/压缩）</span></li>
-<li><a href="./04-效率工具/imagemagick-conversion">imagemagick-conversion</a><span class="desc">— ImageMagick 图片转换和处理</span></li>
-<li><a href="./04-效率工具/jc-plan">jc-plan</a><span class="desc">— AI 任务管家：自然语言记录、智能排程、到点提醒</span></li>
-<li><a href="./04-效率工具/jc-zhuagongzhonghao">jc-zhuagongzhonghao</a><span class="desc">— 公众号热文抓取与 Wilson Score 智能评分报告</span></li>
-<li><a href="./04-效率工具/pdf">pdf</a><span class="desc">— PDF 文件读取、提取和操作</span></li>
-<li><a href="./04-效率工具/ppocrv5">ppocrv5</a><span class="desc">— 图片/PDF 文字识别（OCR）</span></li>
-<li><a href="./04-效率工具/pptx">pptx</a><span class="desc">— 创建、编辑、处理 PowerPoint 文件</span></li>
-<li><a href="./04-效率工具/web-artifacts-builder">web-artifacts-builder</a><span class="desc">— 创建多组件 HTML 制品</span></li>
-<li><a href="./04-效率工具/webapp-testing">webapp-testing</a><span class="desc">— 基于 Playwright 的本地 Web 应用测试</span></li>
-<li><a href="./04-效率工具/xlsx">xlsx</a><span class="desc">— 创建和编辑电子表格文件</span></li>
-</ul>
-
-<h2>视觉与设计 <span class="count">(19)</span></h2>
-<ul class="skill-list">
-<li><a href="./05-视觉与设计/ai-video-production">ai-video-production</a><span class="desc">— AI 短视频全流程生产管线，多 Agent 协作端到端成片</span></li>
-<li><a href="./05-视觉与设计/NanoBanana-PPT-Skills">NanoBanana-PPT-Skills</a><span class="desc">— AI 自动生成高质量 PPT 图片和视频</span></li>
-<li><a href="./05-视觉与设计/algorithmic-art">algorithmic-art</a><span class="desc">— 使用 p5.js 创建算法艺术</span></li>
-<li><a href="./05-视觉与设计/baoyu-article-illustrator">baoyu-article-illustrator</a><span class="desc">— 分析文章结构，自动生成配图插图</span></li>
-<li><a href="./05-视觉与设计/baoyu-comic">baoyu-comic</a><span class="desc">— 知识漫画创作，支持多种画风和基调</span></li>
-<li><a href="./05-视觉与设计/baoyu-cover-image">baoyu-cover-image</a><span class="desc">— 文章封面图生成，5维度组合调参</span></li>
-<li><a href="./05-视觉与设计/baoyu-image-gen">baoyu-image-gen</a><span class="desc">— AI 图片生成（OpenAI/Google/DashScope）</span></li>
-<li><a href="./05-视觉与设计/baoyu-infographic">baoyu-infographic</a><span class="desc">— 专业信息图生成，20种布局×17种风格</span></li>
-<li><a href="./05-视觉与设计/baoyu-slide-deck">baoyu-slide-deck</a><span class="desc">— 幻灯片图片批量生成</span></li>
-<li><a href="./05-视觉与设计/baoyu-xhs-images">baoyu-xhs-images</a><span class="desc">— 小红书风格系列信息图生成</span></li>
-<li><a href="./05-视觉与设计/canvas-design">canvas-design</a><span class="desc">— 创建精美 Canvas 视觉艺术作品</span></li>
-<li><a href="./05-视觉与设计/frontend-design">frontend-design</a><span class="desc">— 创建高品质前端界面设计</span></li>
-<li><a href="./05-视觉与设计/gemini-image">gemini-image</a><span class="desc">— 通过 Gemini 生成图片</span></li>
-<li><a href="./05-视觉与设计/magazine-cover">magazine-cover</a><span class="desc">— 杂志风格封面图片生成（黑白极简编辑风格）</span></li>
-<li><a href="./05-视觉与设计/remotion-video">remotion-video</a><span class="desc">— 使用 Remotion 框架以编程方式创建视频</span></li>
-<li><a href="./05-视觉与设计/slack-gif-creator">slack-gif-creator</a><span class="desc">— 创建适用于 Slack 的动画 GIF</span></li>
-<li><a href="./05-视觉与设计/theme-factory">theme-factory</a><span class="desc">— 为制品应用主题样式（幻灯片/文档/页面）</span></li>
-<li><a href="./05-视觉与设计/video-creator">video-creator</a><span class="desc">— 图片 + 音频合成视频，支持转场和 BGM</span></li>
-<li><a href="./05-视觉与设计/video-optimize">video-optimize</a><span class="desc">— 爆款视频拆解与优化专家（8维度拆解）</span></li>
-</ul>
-
-<h2>发布与平台 <span class="count">(9)</span></h2>
-<ul class="skill-list">
-<li><a href="./06-发布与平台/anything-to-notebooklm">anything-to-notebooklm</a><span class="desc">— 多源内容智能处理，上传 NotebookLM 生成播客/PPT/思维导图</span></li>
-<li><a href="./06-发布与平台/baoyu-post-to-wechat">baoyu-post-to-wechat</a><span class="desc">— 发布内容到微信公众号</span></li>
-<li><a href="./06-发布与平台/baoyu-post-to-x">baoyu-post-to-x</a><span class="desc">— 发布推文和文章到 X/Twitter</span></li>
-<li><a href="./06-发布与平台/crc-offer-cover">crc-offer-cover</a><span class="desc">— 生成 CRC 视觉风格 Offer 封面图文案</span></li>
-<li><a href="./06-发布与平台/crc-offer-post">crc-offer-post</a><span class="desc">— CRC 学员 Offer 小红书帖子全流程生成</span></li>
-<li><a href="./06-发布与平台/follow-builders">follow-builders</a><span class="desc">— AI builders 行业动态摘要</span></li>
-<li><a href="./06-发布与平台/x-article-publisher">x-article-publisher</a><span class="desc">— 将 Markdown 文章发布到 X (Twitter) Articles</span></li>
-<li><a href="./06-发布与平台/小红书留学求职ip号帖子改编">小红书留学求职ip号帖子改编</a><span class="desc">— 基于人设和参考文章进行换皮仿写</span></li>
-<li><a href="./06-发布与平台/投流帖改写">投流帖改写</a><span class="desc">— 将竞品投流帖改编为橙然 CRC 版本</span></li>
-</ul>
-
-<script>document.getElementById('total').textContent = '共 ' + document.querySelectorAll('.skill-list li').length + ' 个技能';</script>
+<div class="toolbar">
+  <div class="wrap">
+    <div class="search" role="search">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="搜索技能名、功能或分类…" aria-label="搜索技能">
+      <button id="clear" aria-label="清空搜索" title="清空">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <span class="hint"><kbd>/</kbd> 聚焦</span>
+    </div>
+    <div class="pills" id="pills"></div>
+  </div>
 </div>
+
+<main class="wrap">
+  <div class="result" id="result" aria-live="polite"></div>
+  <div id="list"></div>
+</main>
+
+<footer>
+  <div class="wrap">all-skills · 技能目录与 <code>~/.newmax/skills/</code> 兼容，每个目录含一个 SKILL.md</div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const CATS = [
+  { id: "01-写作与内容", name: "写作与内容", color: "#d97706" },
+  { id: "02-商业思维",   name: "商业思维",   color: "#059669" },
+  { id: "03-提示词与AI", name: "提示词与 AI", color: "#7c3aed" },
+  { id: "04-效率工具",   name: "效率工具",   color: "#0891b2" },
+  { id: "05-视觉与设计", name: "视觉与设计", color: "#db2777" },
+  { id: "06-发布与平台", name: "发布与平台", color: "#2563eb" }
+];
+const REPO = "https://github.com/wangruiyu070802/all-skills/tree/main/";
+
+/* [name, description, categoryIndex] */
+const DATA = [
+  ["AI贴片文案生成器", "从播客、文章、长内容素材中产出AI贴片视频文案", 0],
+  ["blog-post-writer", "将零散想法或原始文章转化为指定风格的公众号文章", 0],
+  ["brand-guidelines", "应用品牌配色和排版到各类内容制品", 0],
+  ["daily-review", "每日工作回顾与洞察分析，总结改进建议", 0],
+  ["dao-fa-shu-qi", "道法术器拆解器，用第一人称口述视角深度拆解内容", 0],
+  ["deep-review", "深度工作分析与项目洞察，长期维度总结", 0],
+  ["doc-coauthoring", "通过结构化工作流协作文档、提案、技术规格", 0],
+  ["dontbesilent爆款选题生成器", "基于 dontbesilent 推文库生成短视频爆款选题卡片", 0],
+  ["internal-comms", "内部沟通文案写作模板与格式", 0],
+  ["jc-jiaocheng", "写出「读完就能动」的教程和行动手册", 0],
+  ["jincheng-pyq", "何锦成朋友圈风格文案生成与优化", 0],
+  ["khazix-writer", "数字生命卡兹克公众号长文写作", 0],
+  ["long-term-plan", "创建和管理长期项目计划文档", 0],
+  ["self-intro-writer", "生成不同场景（私聊、社群、朋友圈、商务）的自我介绍", 0],
+  ["skill-creator", "创建和更新技能（Skill）的完整指南", 0],
+  ["xiaojiang", "基于「销讲六段式」撰写私域直播销讲稿", 0],
+  ["yanjiang", "演讲稿与分享稿打磨工具（建稿/打磨/诊断）", 0],
+  ["五步写作法", "两阶段写作辅助：生成备选标题 + 五步写作法拆解", 0],
+  ["写作智能体", "创建、分析和优化写作智能体的系统提示词", 0],
+  ["咨询逐字稿分析器", "从留学求职咨询逐字稿中提取决策心理洞察", 0],
+  ["商业评论-dontbesilent文风", "模仿 dontbesilent 冷酷商业评论文风", 0],
+  ["文风DNA分析", "多维度文风DNA量化编码与哲学级解析", 0],
+  ["案例拆解生成器", "将案例/方法/工具快速拆解成结构化内容", 0],
+  ["爆款开头生成器", "基于叙事模型生成爆款短视频开头文案", 0],
+  ["爆款标题大师", "基于八大故事模型生成多角度爆款标题", 0],
+  ["私戳作业批改", "批改战队成员私戳聊天记录，输出四段式培训分析", 0],
+  ["chatroom-austrian", "哈耶克 × 米塞斯 × Claude 奥派经济学三人对话", 1],
+  ["data-analysis", "全链路数据分析，支持表格/文档/图像处理", 1],
+  ["dbs", "dontbesilent 商业工具箱主入口，自动路由诊断工具", 1],
+  ["dbs-action", "用阿德勒心理学诊断执行力问题", 1],
+  ["dbs-benchmark", "五重过滤法找到值得模仿的对标", 1],
+  ["dbs-content", "选题通过后诊断怎么做成好内容", 1],
+  ["dbs-deconstruct", "维特根斯坦 + 奥派经济学拆解模糊商业概念", 1],
+  ["dbs-diagnosis", "商业模式诊断：问诊模式 + 体检模式", 1],
+  ["dbs-hook", "短视频开头诊断与优化方案生成", 1],
+  ["dbs-xhs-title", "从75个验证过的爆款公式中选对小红书标题", 1],
+  ["interpersonal-reflection-coach", "人际关系沟通反思教练，分析事件并给出策略", 1],
+  ["office-hours", "YC Office Hours：创业问诊与设计思维头脑风暴", 1],
+  ["shizhanying-coach", "实战营AI教练，诊断学员状态并输出个性化策略", 1],
+  ["siyuliebian", "私域裂变发售全流程操盘助手", 1],
+  ["university-planner", "多元宇宙大学规划智能体，7阶段对话生成四年规划", 1],
+  ["行业研究", "系统性行业研究分析框架", 1],
+  ["AI方法论学习器", "从别人AI使用素材中提炼可复用方法论和技巧", 2],
+  ["BROK提示词优化器", "用 BROK 框架分析、优化或从零创建提示词", 2],
+  ["ai-yuyi", "AI 使用水平诊断与提升教练", 2],
+  ["claude-skills-zh-cn", "Anthropic Skills 中文翻译集合", 2],
+  ["interactive-learning", "基于 Bloom 2 Sigma 理论的一对一交互式学习系统", 2],
+  ["jc-clarifier", "万能问题澄清器，模糊需求 → 清晰提示词", 2],
+  ["mcp-builder", "创建高质量 MCP 服务器的完整指南", 2],
+  ["niuma-help", "牛马AI产品使用引导与帮助", 2],
+  ["project-init", "项目初始化引导，需求拆解到目录结构搭建", 2],
+  ["thinking-coach", "AI 思维私教：费曼对练 / AI 拷问 / 实战模拟", 2],
+  ["workflow-automator", "自动化工作流编排，CI/CD/脚本/定时任务", 2],
+  ["虚构角色智能体生成器", "将技能需求转化为有完整世界观的虚构角色 System Prompt", 2],
+  ["视觉风格提示词", "学习任意创作者视觉风格并生成匹配图片提示词", 2],
+  ["X搜索语法生成器", "自然语言描述自动生成 X 平台高级搜索语法", 3],
+  ["baoyu-compress-image", "图片压缩为 WebP 或 PNG 格式", 3],
+  ["baoyu-danger-gemini-web", "通过逆向 Gemini Web API 生成图片和文本", 3],
+  ["baoyu-danger-x-to-markdown", "X/Twitter 推文和文章转 Markdown", 3],
+  ["baoyu-format-markdown", "格式化文本和 Markdown 文件", 3],
+  ["baoyu-markdown-to-html", "Markdown 转带样式的 HTML", 3],
+  ["baoyu-url-to-markdown", "抓取 URL 并转换为 Markdown", 3],
+  ["deepl", "通过 DeepL API 翻译文本和文档", 3],
+  ["docx", "创建、读取、编辑 Word 文档", 3],
+  ["feishu-doc-reader", "通过飞书开放 API 读取文档内容", 3],
+  ["ffmpeg-usage", "基于 FFmpeg 的音视频处理（转换/拼接/压缩）", 3],
+  ["imagemagick-conversion", "ImageMagick 图片转换和处理", 3],
+  ["jc-plan", "AI 任务管家：自然语言记录、智能排程、到点提醒", 3],
+  ["jc-zhuagongzhonghao", "公众号热文抓取与 Wilson Score 智能评分报告", 3],
+  ["pdf", "PDF 文件读取、提取和操作", 3],
+  ["ppocrv5", "图片/PDF 文字识别（OCR）", 3],
+  ["pptx", "创建、编辑、处理 PowerPoint 文件", 3],
+  ["web-artifacts-builder", "创建多组件 HTML 制品", 3],
+  ["webapp-testing", "基于 Playwright 的本地 Web 应用测试", 3],
+  ["xlsx", "创建和编辑电子表格文件", 3],
+  ["NanoBanana-PPT-Skills", "AI 自动生成高质量 PPT 图片和视频", 4],
+  ["ai-video-production", "AI 短视频全流程生产管线，多 Agent 协作端到端成片", 4],
+  ["algorithmic-art", "使用 p5.js 创建算法艺术", 4],
+  ["baoyu-article-illustrator", "分析文章结构，自动生成配图插图", 4],
+  ["baoyu-comic", "知识漫画创作，支持多种画风和基调", 4],
+  ["baoyu-cover-image", "文章封面图生成，5维度组合调参", 4],
+  ["baoyu-image-gen", "AI 图片生成（OpenAI/Google/DashScope）", 4],
+  ["baoyu-infographic", "专业信息图生成，20种布局×17种风格", 4],
+  ["baoyu-slide-deck", "幻灯片图片批量生成", 4],
+  ["baoyu-xhs-images", "小红书风格系列信息图生成", 4],
+  ["canvas-design", "创建精美 Canvas 视觉艺术作品", 4],
+  ["frontend-design", "创建高品质前端界面设计", 4],
+  ["gemini-image", "通过 Gemini 生成图片", 4],
+  ["magazine-cover", "杂志风格封面图片生成（黑白极简编辑风格）", 4],
+  ["remotion-video", "使用 Remotion 框架以编程方式创建视频", 4],
+  ["slack-gif-creator", "创建适用于 Slack 的动画 GIF", 4],
+  ["theme-factory", "为制品应用主题样式（幻灯片/文档/页面）", 4],
+  ["video-creator", "图片 + 音频合成视频，支持转场和 BGM", 4],
+  ["video-optimize", "爆款视频拆解与优化专家（8维度拆解）", 4],
+  ["anything-to-notebooklm", "多源内容智能处理，上传 NotebookLM 生成播客/PPT/思维导图", 5],
+  ["baoyu-post-to-wechat", "发布内容到微信公众号", 5],
+  ["baoyu-post-to-x", "发布推文和文章到 X/Twitter", 5],
+  ["crc-offer-cover", "生成 CRC 视觉风格 Offer 封面图文案", 5],
+  ["crc-offer-post", "CRC 学员 Offer 小红书帖子全流程生成", 5],
+  ["x-article-publisher", "将 Markdown 文章发布到 X (Twitter) Articles", 5],
+  ["小红书留学求职ip号帖子改编", "基于人设和参考文章进行换皮仿写", 5],
+  ["投流帖改写", "将竞品投流帖改编为橙然 CRC 版本", 5],
+];
+
+const collator = new Intl.Collator("zh-Hans-CN", { numeric: true, sensitivity: "base" });
+/* SKILLS[i] = { n: 名称, d: 描述, c: 分类下标 } */
+const SKILLS = DATA.map(([n, d, c]) => ({ n, d, c }));
+SKILLS.sort((a, b) => (a.c - b.c) || collator.compare(a.n, b.n));
+
+document.getElementById("total").textContent = SKILLS.length;
+
+const $q = document.getElementById("q");
+const $clear = document.getElementById("clear");
+const $pills = document.getElementById("pills");
+const $list = document.getElementById("list");
+const $result = document.getElementById("result");
+const $toast = document.getElementById("toast");
+
+let query = "";
+let activeCat = "all";   /* "all" 或 0..5 的分类下标 */
+let tokens = [];
+
+function catOf(s) { return CATS[s.c] || { id: "", name: "未分类", color: "#888" }; }
+
+/* pills */
+function buildPills() {
+  const counts = CATS.map((_, i) => SKILLS.filter(s => s.c === i).length);
+
+  const make = (label, value, count) => {
+    const b = document.createElement("button");
+    b.className = "pill";
+    b.dataset.cat = String(value);
+    b.innerHTML = `${label} <span class="n">${count}</span>`;
+    return b;
+  };
+
+  $pills.appendChild(make("全部", "all", SKILLS.length));
+  CATS.forEach((c, i) => $pills.appendChild(make(c.name, i, counts[i])));
+
+  $pills.addEventListener("click", e => {
+    const btn = e.target.closest(".pill");
+    if (!btn) return;
+    const v = btn.dataset.cat;
+    activeCat = v === "all" ? "all" : Number(v);
+    syncHash();
+    syncPills();
+    render();
+  });
+}
+
+function syncPills() {
+  $pills.querySelectorAll(".pill").forEach(b => {
+    const v = b.dataset.cat;
+    const same = v === "all" ? activeCat === "all" : Number(v) === activeCat;
+    b.setAttribute("aria-pressed", String(same));
+  });
+}
+
+/* utils */
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+function hl(s) {
+  if (!tokens.length) return esc(s);
+  const re = new RegExp("(" + tokens.map(escapeRe).join("|") + ")", "gi");
+  return String(s).split(re).map((p, i) => i % 2 ? "<mark>" + esc(p) + "</mark>" : esc(p)).join("");
+}
+function card(s) {
+  const cat = catOf(s);
+  const rel = cat.id + "/" + s.n;
+  const url = REPO + cat.id.split("/").map(encodeURIComponent).join("/") + "/" + encodeURIComponent(s.n);
+  return `<article class="card">
+    <div class="top">
+      <h3><a href="${url}" target="_blank" rel="noopener">${hl(s.n)}<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></h3>
+      <button class="copy" data-path="${esc(rel)}" aria-label="复制路径" title="复制路径">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+      </button>
+    </div>
+    <p class="desc">${hl(s.d)}</p>
+    <div class="foot" title="${esc(rel)}"><span class="dot" style="--c:${cat.color}"></span><span>${esc(cat.name)}</span></div>
+  </article>`;
+}
+
+function render() {
+  const q = query.trim().toLowerCase();
+  tokens = q ? q.split(/\s+/).filter(Boolean) : [];
+
+  let matched = SKILLS.filter(s => {
+    if (activeCat !== "all" && s.c !== activeCat) return false;
+    if (!tokens.length) return true;
+    const cat = catOf(s);
+    const hay = (s.n + " " + s.d + " " + cat.id + " " + cat.name).toLowerCase();
+    return tokens.every(t => hay.includes(t));
+  });
+
+  /* 相关度：名称命中 > 描述命中 > 只命中分类；同分保持分类+名称顺序 */
+  if (tokens.length) {
+    const score = s => {
+      const name = s.n.toLowerCase(), desc = s.d.toLowerCase();
+      if (tokens.every(t => name.includes(t))) return 0;
+      if (name.includes(tokens[0])) return 1;
+      if (tokens.every(t => (name + " " + desc).includes(t))) return 2;
+      return 3;
+    };
+    matched = matched
+      .map((s, i) => ({ s, i, k: score(s) }))
+      .sort((a, b) => (a.k - b.k) || (a.i - b.i))
+      .map(x => x.s);
+  }
+
+  const searching = tokens.length > 0 || activeCat !== "all";
+  const catLabel = activeCat === "all" ? "" : catOf({ c: activeCat }).name;
+  $result.innerHTML = searching
+    ? `找到 <b>${matched.length}</b> 个技能${catLabel ? " · " + esc(catLabel) : ""}`
+    : "";
+
+  if (!matched.length) {
+    $list.innerHTML = `<div class="empty"><strong>没有匹配的技能</strong>换个词试试，或者看看全部分类<button onclick="resetAll()">清除筛选</button></div>`;
+    return;
+  }
+
+  if (searching) {
+    $list.innerHTML = `<div class="grid" style="margin-top:10px">${matched.map(card).join("")}</div>`;
+    return;
+  }
+
+  $list.innerHTML = CATS.map((c, i) => {
+    const items = matched.filter(s => s.c === i);
+    if (!items.length) return "";
+    return `<section><div class="cat"><span class="bar" style="--c:${c.color}"></span><h2>${esc(c.name)}</h2><span class="n">${items.length}</span></div><div class="grid">${items.map(card).join("")}</div></section>`;
+  }).join("");
+}
+
+/* events */
+$q.addEventListener("input", () => {
+  query = $q.value;
+  $clear.classList.toggle("on", query.length > 0);
+  render();
+});
+$clear.addEventListener("click", () => { $q.value = ""; query = ""; $clear.classList.remove("on"); $q.focus(); render(); });
+
+document.addEventListener("keydown", e => {
+  const tag = document.activeElement && document.activeElement.tagName;
+  const typing = tag === "INPUT" || tag === "TEXTAREA";
+  if (e.key === "/" && !typing) { e.preventDefault(); $q.focus(); }
+  if (e.key === "Escape" && ($q.value || activeCat !== "all")) { resetAll(); }
+});
+
+function resetAll() {
+  $q.value = ""; query = ""; $clear.classList.remove("on");
+  activeCat = "all"; syncHash(); syncPills(); render();
+}
+window.resetAll = resetAll;
+
+$list.addEventListener("click", e => {
+  const btn = e.target.closest(".copy");
+  if (!btn) return;
+  e.preventDefault();
+  copy(btn.dataset.path);
+});
+
+async function copy(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast("已复制 " + text);
+  } catch (err) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); toast("已复制 " + text); }
+    catch (e2) { toast("复制失败，请手动选择路径"); }
+    document.body.removeChild(ta);
+  }
+}
+
+let toastTimer;
+function toast(msg) {
+  $toast.textContent = msg;
+  $toast.classList.add("on");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => $toast.classList.remove("on"), 1600);
+}
+
+/* hash routing: #01-写作与内容 */
+function syncHash() {
+  const id = activeCat === "all" ? "" : CATS[activeCat].id;
+  const h = id ? "#" + encodeURIComponent(id) : "";
+  if (location.hash !== h) history.replaceState(null, "", h || location.pathname + location.search);
+}
+function readHash() {
+  const raw = decodeURIComponent(location.hash.slice(1));
+  const i = CATS.findIndex(c => c.id === raw);
+  if (i >= 0) activeCat = i;
+}
+window.addEventListener("hashchange", () => { readHash(); syncPills(); render(); });
+
+buildPills();
+readHash();
+syncPills();
+render();
+</script>
 </body>
 </html>
