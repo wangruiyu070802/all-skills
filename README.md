@@ -93,7 +93,7 @@ AI技能仓库。每个 skill 文件夹包含一个 SKILL.md 文件，可直接�
 - [webapp-testing](./04-效率工具/webapp-testing) — 基于 Playwright 的本地 Web 应用测试
 - [xlsx](./04-效率工具/xlsx) — 创建和编辑电子表格文件
 
-## 视觉与设计 (19)
+## 视觉与设计 (20)
 
 - [ai-video-production](./05-视觉与设计/ai-video-production) — AI 短视频全流程生产管线，多 Agent 协作端到端成片
 - [NanoBanana-PPT-Skills](./05-视觉与设计/NanoBanana-PPT-Skills) — AI 自动生成高质量 PPT 图片和视频
@@ -106,6 +106,7 @@ AI技能仓库。每个 skill 文件夹包含一个 SKILL.md 文件，可直接�
 - [baoyu-slide-deck](./05-视觉与设计/baoyu-slide-deck) — 幻灯片图片批量生成
 - [baoyu-xhs-images](./05-视觉与设计/baoyu-xhs-images) — 小红书风格系列信息图生成
 - [canvas-design](./05-视觉与设计/canvas-design) — 创建精美 Canvas 视觉艺术作品
+- [efficient-animation](./05-视觉与设计/efficient-animation) — 用最小 token 生成动画与动态图示（Mermaid / SVG / Manim / p5.js）
 - [frontend-design](./05-视觉与设计/frontend-design) — 创建高品质前端界面设计
 - [gemini-image](./05-视觉与设计/gemini-image) — 通过 Gemini 生成图片
 - [magazine-cover](./05-视觉与设计/magazine-cover) — 杂志风格封面图片生成（黑白极简编辑风格）
@@ -115,14 +116,13 @@ AI技能仓库。每个 skill 文件夹包含一个 SKILL.md 文件，可直接�
 - [video-creator](./05-视觉与设计/video-creator) — 图片 + 音频合成视频，支持转场和 BGM
 - [video-optimize](./05-视觉与设计/video-optimize) — 爆款视频拆解与优化专家（8维度拆解）
 
-## 发布与平台 (9)
+## 发布与平台 (8)
 
 - [anything-to-notebooklm](./06-发布与平台/anything-to-notebooklm) — 多源内容智能处理，上传 NotebookLM 生成播客/PPT/思维导图
 - [baoyu-post-to-wechat](./06-发布与平台/baoyu-post-to-wechat) — 发布内容到微信公众号
 - [baoyu-post-to-x](./06-发布与平台/baoyu-post-to-x) — 发布推文和文章到 X/Twitter
 - [crc-offer-cover](./06-发布与平台/crc-offer-cover) — 生成 CRC 视觉风格 Offer 封面图文案
 - [crc-offer-post](./06-发布与平台/crc-offer-post) — CRC 学员 Offer 小红书帖子全流程生成
-- [follow-builders](./06-发布与平台/follow-builders) — AI builders 行业动态摘要
 - [x-article-publisher](./06-发布与平台/x-article-publisher) — 将 Markdown 文章发布到 X (Twitter) Articles
 - [小红书留学求职ip号帖子改编](./06-发布与平台/小红书留学求职ip号帖子改编) — 基于人设和参考文章进行换皮仿写
 - [投流帖改写](./06-发布与平台/投流帖改写) — 将竞品投流帖改编为橙然 CRC 版本
