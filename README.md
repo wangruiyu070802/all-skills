@@ -2,15 +2,16 @@
 
 AI技能仓库。每个 skill 文件夹包含一个 SKILL.md 文件，可直接放入 `~/.claude/skills/` 使用。
 
-总计 **103** 个技能。
+总计 **104** 个技能。
 
 ---
 
-## 写作与内容 (26)
+## 写作与内容 (27)
 
 - [AI贴片文案生成器](./01-写作与内容/AI贴片文案生成器) — 从播客、文章、长内容素材中产出AI贴片视频文案
 - [blog-post-writer](./01-写作与内容/blog-post-writer) — 将零散想法或原始文章转化为指定风格的公众号文章
 - [brand-guidelines](./01-写作与内容/brand-guidelines) — 应用品牌配色和排版到各类内容制品
+- [chinese-novelist](./01-写作与内容/chinese-novelist) — 中文小说创作助手，分章节写完整长篇，支持中断续写与自动校验
 - [daily-review](./01-写作与内容/daily-review) — 每日工作回顾与洞察分析，总结改进建议
 - [dao-fa-shu-qi](./01-写作与内容/dao-fa-shu-qi) — 道法术器拆解器，用第一人称口述视角深度拆解内容
 - [deep-review](./01-写作与内容/deep-review) — 深度工作分析与项目洞察，长期维度总结
