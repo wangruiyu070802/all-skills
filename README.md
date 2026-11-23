@@ -2,7 +2,7 @@
 
 AI技能仓库。每个 skill 文件夹包含一个 SKILL.md 文件，可直接放入 `~/.claude/skills/` 使用。
 
-总计 **104** 个技能。
+总计 **105** 个技能。
 
 ---
 
@@ -94,7 +94,7 @@ AI技能仓库。每个 skill 文件夹包含一个 SKILL.md 文件，可直接�
 - [webapp-testing](./04-效率工具/webapp-testing) — 基于 Playwright 的本地 Web 应用测试
 - [xlsx](./04-效率工具/xlsx) — 创建和编辑电子表格文件
 
-## 视觉与设计 (20)
+## 视觉与设计 (21)
 
 - [ai-video-production](./05-视觉与设计/ai-video-production) — AI 短视频全流程生产管线，多 Agent 协作端到端成片
 - [NanoBanana-PPT-Skills](./05-视觉与设计/NanoBanana-PPT-Skills) — AI 自动生成高质量 PPT 图片和视频
@@ -107,6 +107,7 @@ AI技能仓库。每个 skill 文件夹包含一个 SKILL.md 文件，可直接�
 - [baoyu-slide-deck](./05-视觉与设计/baoyu-slide-deck) — 幻灯片图片批量生成
 - [baoyu-xhs-images](./05-视觉与设计/baoyu-xhs-images) — 小红书风格系列信息图生成
 - [canvas-design](./05-视觉与设计/canvas-design) — 创建精美 Canvas 视觉艺术作品
+- [design-taste-frontend](./05-视觉与设计/design-taste-frontend) — 反模板前端设计技能：按行业生成专业公司网站，内置布局/配色/动效与浏览器校验
 - [efficient-animation](./05-视觉与设计/efficient-animation) — 用最小 token 生成动画与动态图示（Mermaid / SVG / Manim / p5.js）
 - [frontend-design](./05-视觉与设计/frontend-design) — 创建高品质前端界面设计
 - [gemini-image](./05-视觉与设计/gemini-image) — 通过 Gemini 生成图片
